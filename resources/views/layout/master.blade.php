@@ -46,7 +46,7 @@
                         <i class="fas fa-search"></i>
                     </a>
                     <div class="navbar-search-block">
-                        <form class="form-inline" method="GET" action="{{Route('products.search')}}">
+                        <form class="form-inline" method="GET" action="{{ Route('products.search') }}">
                             <div class="input-group input-group-sm">
                                 <input class="form-control form-control-navbar" type="search" placeholder="Search"
                                     aria-label="Search" name="keyword">
@@ -163,6 +163,18 @@
                         <i class="fas fa-th-large"></i>
                     </a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown">
+                        <i class="mdi mdi-earth"></i> {{ Config::get('languages')[App::getLocale()] }} </a>
+                    <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
+                        @foreach (Config::get('languages') as $lang => $language)
+                            @if ($lang != App::getLocale())
+                                <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}"> {{$language}} </a>
+                            @endif
+                        @endforeach
+                    </div>
+
+                </li>
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -187,7 +199,7 @@
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">
-                            {{Auth::check() ? Auth::user()->name : ''}}
+                            {{ Auth::check() ? Auth::user()->name : '' }}
 
 
                         </a>
@@ -196,7 +208,7 @@
 
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
-                    <form action="{{Route('products.search')}}" method="GET">
+                    <form action="{{ Route('products.search') }}" method="GET">
                         <div class="input-group" data-widget="sidebar-search">
                             <input class="form-control form-control-sidebar" type="search" placeholder="Search"
                                 aria-label="Search">
@@ -220,7 +232,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Dashboard
+                                    @lang('lg.dashboard')
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -245,16 +257,16 @@
                                 </li>
                             </ul>
                         </li>
-                        @if(Auth::check() &&Auth::user()->role == 1)
-                        <li class="nav-item">
-                            <a href="{{ Route('users.list') }}" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    Users
-                                    <span class="right badge badge-danger">New</span>
-                                </p>
-                            </a>
-                        </li>
+                        @if (Auth::check() && Auth::user()->role == 1)
+                            <li class="nav-item">
+                                <a href="{{ Route('users.list') }}" class="nav-link">
+                                    <i class="nav-icon fas fa-user"></i>
+                                    <p>
+                                        Users
+                                        <span class="right badge badge-danger">New</span>
+                                    </p>
+                                </a>
+                            </li>
                         @endif
                         <li class="nav-item">
                             <a href="{{ Route('products.list') }}" class="nav-link">

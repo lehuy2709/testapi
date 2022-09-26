@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -70,11 +71,6 @@ Route::get('guest', function () {
     return view('dashboard');
 })->name('guest');
 
-// Route::get('/login-google', function () {
-//     return Socialite::driver('google')->redirect();
-// });
-// // dduowfng daanx caaus hifnh torng api
-// Route::get('/google/callback', function () {
-//     dd(Socialite::driver('google')->user());
-// });
+Route::get('lang/{lang}', [LanguageController::class,'switchLang'])->name('lang.switch');
+
 
