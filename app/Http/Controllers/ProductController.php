@@ -61,4 +61,11 @@ class ProductController extends Controller
             200
         );
     }
+    public function apiGetById($id){
+        $product = Product::find($id);
+
+        return response()->json(
+            $product,200
+        );
+    }
 }

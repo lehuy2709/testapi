@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('users', [UserController::class, 'apiGetListUser']);
 Route::get('products', [ProductController::class, 'apiGetListProduct']);
+Route::get('products/{id}', [ProductController::class, 'apiGetById']);
 
 
 Route::resource('classroom', ClassroomController::class);
