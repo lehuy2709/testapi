@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         // test Relations
-        // $users = User::all();
+        $users = User::all();
         $users = User::select('id', 'name', 'code', 'email', 'role')
             ->where('id', '>=', 3)
             ->where('id', '<', 7)
@@ -178,7 +178,7 @@ class UserController extends Controller
     {
         $users = User::select('id', 'name', 'username')
             ->with('posts')
-            ->paginate(3);
+            ->get();
         return response()->json([
             'data' => $users
         ], 200);
