@@ -4,7 +4,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 use Laravel\Socialite\Facades\Socialite;
 
 
@@ -18,6 +20,9 @@ use Laravel\Socialite\Facades\Socialite;
 | contains the "web" middleware group. Now create something great!
 |
 */
+if(App::environment('production')){
+    URL::forceScheme('https');
+}
 
 Route::get('/', function () {
     return view('welcome');
