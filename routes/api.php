@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('users', [UserController::class, 'apiGetListUser']);
+Route::get('products', [ProductController::class, 'apiGetListProduct']);
 
 
 Route::resource('classroom', ClassroomController::class);

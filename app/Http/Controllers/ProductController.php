@@ -52,4 +52,11 @@ class ProductController extends Controller
         $products = Product::where('name', 'LIKE', '%' . $request->keyword . '%')->paginate(5);
         return view('admin.product.list', compact('products'));
     }
+    public function apiGetListProduct(){
+        $products = Product::all();
+
+        return  response()->json([
+            $products
+        ],200);
+    }
 }
