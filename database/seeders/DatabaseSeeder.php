@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // User::factory(10)->create(); // sinh ra 10 bản ghi ở bảng users được đn ở UserFactory
-        // Classroom::factory(10)->create();
-        User::factory(10)->create();
+        Classroom::factory(10)->create();
+        // User::factory(10)->create();
 
 
         // \App\Models\User::factory()->create([
